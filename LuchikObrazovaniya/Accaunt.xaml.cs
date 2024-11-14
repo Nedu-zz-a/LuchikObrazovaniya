@@ -242,7 +242,7 @@ namespace LuchikObrazovaniya
             }
         }
 
-
+        public static int indikator { get; set; } = 0;
 
         public class Student 
         {
@@ -252,10 +252,13 @@ namespace LuchikObrazovaniya
 
         private void raspisanie_Click(object sender, RoutedEventArgs e)
         {
-            Raspisanie raspisanie = new Raspisanie();
-            raspisanie.Left = this.Left + this.Width + 1;
-            raspisanie.Top = this.Top;
-            raspisanie.Show();
+            if (indikator == 0)
+            {
+                Raspisanie raspisanie = new Raspisanie();
+                raspisanie.Left = this.Left + this.Width + 0.9;
+                raspisanie.Top = this.Top;
+                raspisanie.Show();
+            }
         }
     }
 }

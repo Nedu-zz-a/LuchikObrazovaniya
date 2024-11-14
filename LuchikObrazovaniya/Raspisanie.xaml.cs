@@ -26,6 +26,7 @@ namespace LuchikObrazovaniya
 
         private void back_Click(object sender, RoutedEventArgs e)
         {
+            Accaunt.indikator = 0;
             this.Close();
         }
     }
