@@ -7,12 +7,13 @@
         mc:Ignorable="d"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
+        AllowsTransparency="True"
         ResizeMode="NoResize"
+        Icon="Image/icon.png"
+        FocusVisualStyle="{x:Null}"
         FontFamily="Open Sans"
         Title="Accaunt" Height="300" Width="450">
-    <Window.Clip>
-        <RectangleGeometry Rect="0,0,450,300" RadiusX="10" RadiusY="10"/>
-    </Window.Clip>
+
     <Grid Background="white">
         <Grid.RowDefinitions>
             <RowDefinition Height="*"/>
@@ -22,7 +23,7 @@
             <Rectangle Fill="#9C9990"
 StrokeThickness="3"
 RadiusX="0"
-RadiusY="0" Margin="0,202,0,-228" />
+RadiusY="0" Margin="0,202,0,-206" />
             <Rectangle Fill="#6A6262"
     StrokeThickness="3"
     RadiusX="52.5"
@@ -110,7 +111,7 @@ RadiusY="0" Margin="0,202,0,-228" />
             </Button>
             <Button Width="199" Height="34" 
          VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,11"
-         Name="raspisanie" Click="Vedomost_Click"
+         Name="raspisanie" Click="raspisanie_Click"
          Background="Transparent" Content="Расписание" FontSize="16" Foreground="white"
                     BorderThickness="1" BorderBrush="White" FontWeight="Light">
                 <Button.Resources>

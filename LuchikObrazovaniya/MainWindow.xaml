@@ -11,9 +11,10 @@
         AllowsTransparency="True"
         ResizeMode="NoResize"
         Title="MainWindow" Height="350" Width="250"
+        Icon="Image/icon.png"
         FontFamily="Open Sans">
     <Window.Clip>
-        <RectangleGeometry Rect="0,0,250,350" RadiusX="10" RadiusY="10"/>
+        <RectangleGeometry Rect="0,0,250,450" RadiusX="10" RadiusY="10"/>
     </Window.Clip>
     <Grid Background="White">
         <Grid.RowDefinitions>
@@ -74,6 +75,7 @@
                     Name="log"
                     Click="log_Click"   
                     Background="#9C9990"
+                    BorderThickness="0"
                     Margin="0,15,0,0"
                     Foreground="White"
                     FontSize="18">

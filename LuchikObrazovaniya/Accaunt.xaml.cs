@@ -248,9 +248,14 @@ namespace LuchikObrazovaniya
         {
             public string Name { get; set; }
             public string Grade { get; set; } // Инициализируем список оценок
+        }
 
-            // Свойство для отображения всех оценок в одной строке
-            public string GradesAsString => string.Join(", ", Grade);
+        private void raspisanie_Click(object sender, RoutedEventArgs e)
+        {
+            Raspisanie raspisanie = new Raspisanie();
+            raspisanie.Left = this.Left + this.Width + 1;
+            raspisanie.Top = this.Top;
+            raspisanie.Show();
         }
     }
 }
