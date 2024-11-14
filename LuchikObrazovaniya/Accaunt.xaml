@@ -95,27 +95,6 @@ RadiusY="0" Margin="0,202,0,-228" />
                     <DataGridTextColumn Header="Оценка" Binding="{Binding Grade}" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <ComboBox Width="215"
-                      Margin="10,162,0,0"
-                    Height="20"
-                    HorizontalAlignment="Left"
-                    VerticalAlignment="Top"
-                    x:Name="FIO_Students"/>
-            <ComboBox Width="39"
-                Margin="254,162,0,0"
-                Height="20"
-                HorizontalAlignment="Left"
-                VerticalAlignment="Top"
-                x:Name="Marks">
-                <ComboBoxItem Content="2"/>
-                <ComboBoxItem Content="3"/>
-                <ComboBoxItem Content="4"/>
-                <ComboBoxItem Content="5"/>
-            </ComboBox>
-            <Button Name="getmark"
-                    Click="getmark_Click"
-                Content="поставить" Height="20" Margin="322,162,10,43"
-                    Background="#CFD2B2"/>
         </Grid>
     </Grid>
 </Window>

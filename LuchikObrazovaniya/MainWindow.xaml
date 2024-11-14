@@ -44,7 +44,7 @@
                          BorderBrush="#9C9990"
                          Width="200"
                          Height="30"
-                         FontSize="18">
+                         FontSize="18" SelectionOpacity="1" SnapsToDevicePixels="True">
                     <TextBox.Resources>
                         <Style TargetType="Border">
                             <Setter Property="CornerRadius" Value="5"/>
@@ -61,17 +61,11 @@
                            Foreground="#9C9990"
                            HorizontalAlignment="Center"
                            Margin="0,0,0,5"/>
-                <TextBox Name="PasswordTeacher"
+                <PasswordBox Name="PasswordTeacher"
                          BorderBrush="#9C9990"
                          Width="200"
                          Height="30"
-                         FontSize="18">
-                    <TextBox.Resources>
-                        <Style TargetType="Border">
-                            <Setter Property="CornerRadius" Value="5"/>
-                        </Style>
-                    </TextBox.Resources>
-                </TextBox>
+                         FontSize="18"/>
 
             </StackPanel>
         </Grid>

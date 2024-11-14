@@ -39,7 +39,7 @@ namespace LuchikObrazovaniya
         {
             for (int i = 0; i < 6; i++)
             {
-                if (loginTeacher.Text == login_password[i,0].ToString() && PasswordTeacher.Text == login_password[i,1].ToString())
+                if (loginTeacher.Text == login_password[i,0].ToString() && PasswordTeacher.Password.ToString() == login_password[i,1].ToString())
                 {
                     teacherId = i;
                     teacherFio = FIO_Napr[i, 0];
