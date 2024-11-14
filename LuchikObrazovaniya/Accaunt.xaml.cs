@@ -24,13 +24,19 @@ namespace LuchikObrazovaniya
     {
 
         private List<Student> students;
+
+        double[] a1 = new double[6];
+        double[] b1 = new double[6];
+        double[] c1 = new double[6]; // для средних значений
+
         public Accaunt()
         {
             InitializeComponent();
             MainWindow mainWindow = new MainWindow();
             FIO.Text = MainWindow.teacherFio;
             Napravlenie.Text = MainWindow.teacherNapr;
-            int[] a1; int[] b1; int[] c1; // для средних значений
+            
+
             if (MainWindow.teacherId == 0 || MainWindow.teacherId == 1)
             {
 
@@ -40,27 +46,27 @@ namespace LuchikObrazovaniya
                 {
                     for (int j = 0; j < 4; j++)
                     {
-                        if (i == 0) { a += Convert.ToString(MainWindow.UCH_Marks[i, j]); q += MainWindow.UCH_Marks[i, j]; } // заносит в переменную а все оценки ученика
+                        if (i == 0) { a += Convert.ToString(MainWindow.UCH_Marks[i, j]); a1[0] += MainWindow.UCH_Marks[i, j]; } // заносит в переменную а все оценки ученика
                     }
                     for (int j = 0; j < 4; j++)
                     {
-                        if (i == 1) { b += Convert.ToString(MainWindow.UCH_Marks[i, j]); w += MainWindow.UCH_Marks[i, j]; }
+                        if (i == 1) { b += Convert.ToString(MainWindow.UCH_Marks[i, j]); a1[1] += MainWindow.UCH_Marks[i, j]; }
                     }
                     for (int j = 0; j < 4; j++)
                     {
-                        if (i == 2) { c += Convert.ToString(MainWindow.UCH_Marks[i, j]); p += MainWindow.UCH_Marks[i, j]; }
+                        if (i == 2) { c += Convert.ToString(MainWindow.UCH_Marks[i, j]); a1[2] += MainWindow.UCH_Marks[i, j]; }
                     }
                     for (int j = 0; j < 4; j++)
                     {
-                        if (i == 3) { d += Convert.ToString(MainWindow.UCH_Marks[i, j]); r += MainWindow.UCH_Marks[i, j]; }
+                        if (i == 3) { d += Convert.ToString(MainWindow.UCH_Marks[i, j]); a1[3] += MainWindow.UCH_Marks[i, j]; }
                     }
                     for (int j = 0; j < 4; j++)
                     {
-                        if (i == 4) { e += Convert.ToString(MainWindow.UCH_Marks[i, j]); t += MainWindow.UCH_Marks[i, j]; }
+                        if (i == 4) { e += Convert.ToString(MainWindow.UCH_Marks[i, j]); a1[4] += MainWindow.UCH_Marks[i, j]; }
                     }
                     for (int j = 0; j < 4; j++)
                     {
-                        if (i == 5) { f += Convert.ToString(MainWindow.UCH_Marks[i, j]); y += MainWindow.UCH_Marks[i, j]; }
+                        if (i == 5) { f += Convert.ToString(MainWindow.UCH_Marks[i, j]); a1[5] += MainWindow.UCH_Marks[i, j]; }
                     }
                 }
                 List<Student> students = new List<Student>
@@ -85,27 +91,27 @@ namespace LuchikObrazovaniya
                 {
                     for (int j = 0; j < 4; j++)
                     {
-                        if (i == 6) { a += Convert.ToString(MainWindow.UCH_Marks[i, j]); }
+                        if (i == 6) { a += Convert.ToString(MainWindow.UCH_Marks[i, j]); b1[0] += MainWindow.UCH_Marks[i, j]; }
                     }
                     for (int j = 0; j < 4; j++)
                     {
-                        if (i == 7) { b += Convert.ToString(MainWindow.UCH_Marks[i, j]); }
+                        if (i == 7) { b += Convert.ToString(MainWindow.UCH_Marks[i, j]); b1[1] += MainWindow.UCH_Marks[i, j]; }
                     }
                     for (int j = 0; j < 4; j++)
                     {
-                        if (i == 8) { c += Convert.ToString(MainWindow.UCH_Marks[i, j]); }
+                        if (i == 8) { c += Convert.ToString(MainWindow.UCH_Marks[i, j]); b1[2] += MainWindow.UCH_Marks[i, j]; }
                     }
                     for (int j = 0; j < 4; j++)
                     {
-                        if (i == 9) { d += Convert.ToString(MainWindow.UCH_Marks[i, j]); }
+                        if (i == 9) { d += Convert.ToString(MainWindow.UCH_Marks[i, j]); b1[3] += MainWindow.UCH_Marks[i, j]; }
                     }
                     for (int j = 0; j < 4; j++)
                     {
-                        if (i == 10) { e += Convert.ToString(MainWindow.UCH_Marks[i, j]); }
+                        if (i == 10) { e += Convert.ToString(MainWindow.UCH_Marks[i, j]); b1[4] += MainWindow.UCH_Marks[i, j]; }
                     }
                     for (int j = 0; j < 4; j++)
                     {
-                        if (i == 11) { f += Convert.ToString(MainWindow.UCH_Marks[i, j]); }
+                        if (i == 11) { f += Convert.ToString(MainWindow.UCH_Marks[i, j]); b1[5] += MainWindow.UCH_Marks[i, j]; }
                     }
                 }
                 List<Student> students = new List<Student>
@@ -130,27 +136,27 @@ namespace LuchikObrazovaniya
                 {
                     for (int j = 0; j < 4; j++)
                     {
-                        if (i == 12) { a += Convert.ToString(MainWindow.UCH_Marks[i, j]); }
+                        if (i == 12) { a += Convert.ToString(MainWindow.UCH_Marks[i, j]); c1[0] += MainWindow.UCH_Marks[i, j]; }
                     }
                     for (int j = 0; j < 4; j++)
                     {
-                        if (i == 13) { b += Convert.ToString(MainWindow.UCH_Marks[i, j]); }
+                        if (i == 13) { b += Convert.ToString(MainWindow.UCH_Marks[i, j]); c1[1] += MainWindow.UCH_Marks[i, j]; }
                     }
                     for (int j = 0; j < 4; j++)
                     {
-                        if (i == 14) { c += Convert.ToString(MainWindow.UCH_Marks[i, j]); }
+                        if (i == 14) { c += Convert.ToString(MainWindow.UCH_Marks[i, j]); c1[2] += MainWindow.UCH_Marks[i, j]; }
                     }
                     for (int j = 0; j < 4; j++)
                     {
-                        if (i == 15) { d += Convert.ToString(MainWindow.UCH_Marks[i, j]); }
+                        if (i == 15) { d += Convert.ToString(MainWindow.UCH_Marks[i, j]); c1[3] += MainWindow.UCH_Marks[i, j]; }
                     }
                     for (int j = 0; j < 4; j++)
                     {
-                        if (i == 16) { e += Convert.ToString(MainWindow.UCH_Marks[i, j]); }
+                        if (i == 16) { e += Convert.ToString(MainWindow.UCH_Marks[i, j]); c1[4] += MainWindow.UCH_Marks[i, j]; }
                     }
                     for (int j = 0; j < 4; j++)
                     {
-                        if (i == 17) { f += Convert.ToString(MainWindow.UCH_Marks[i, j]); }
+                        if (i == 17) { f += Convert.ToString(MainWindow.UCH_Marks[i, j]); c1[5] += MainWindow.UCH_Marks[i, j]; }
                     }
                 }
                 List<Student> students = new List<Student>
@@ -183,11 +189,56 @@ namespace LuchikObrazovaniya
         {
             if (MainWindow.teacherId == 0 || MainWindow.teacherId == 1)
             {
-                double marks_max = 0;
-                //for (int i = 0; i < 4; i++)
-                //{
-                //    if ()
-                //}
+                double srznach_max = 0;
+                int uchenik = 0;
+                double [] other = new double[6];
+                for (int i = 0; i < 6; i++)
+                {
+                    if (srznach_max < a1[i] / 4)
+                    {
+                        srznach_max = a1[i] / 4;
+                        uchenik = i;
+                        
+                    }
+                    other[i] = a1[i] / 4;
+
+                }
+                MessageBox.Show($"Лучший средний балл: {srznach_max} - {MainWindow.Students[0]}\n\nСредний балл остальных:\n{MainWindow.Students[0]} - {other[0]}\n{MainWindow.Students[1]} - {other[1]}\n{MainWindow.Students[2]} - {other[2]}\n{MainWindow.Students[3]} - {other[3]}\n{MainWindow.Students[4]} - {other[4]}\n{MainWindow.Students[5]} - {other[5]}");
+            }
+            if (MainWindow.teacherId == 2 || MainWindow.teacherId == 3)
+            {
+                double srznach_max = 0;
+                int uchenik = 0;
+                double [] other = new double[6];
+                for (int i = 0; i < 6; i++)
+                {
+                    if (srznach_max < b1[i] / 4)
+                    {
+                        srznach_max = b1[i] / 4;
+                        uchenik = 6 + i;
+                    }
+                    other[i] = b1[i] / 4;
+
+                }
+                MessageBox.Show($"Лучший средний балл: {srznach_max} - {MainWindow.Students[uchenik]}\n\nСредний балл остальных:\n{MainWindow.Students[6]} - {other[0]}\n{MainWindow.Students[7]} - {other[1]}\n{MainWindow.Students[8]} - {other[2]}\n{MainWindow.Students[9]} - {other[3]}\n{MainWindow.Students[10]} - {other[4]}\n{MainWindow.Students[11]} - {other[5]}");
+            }
+            if (MainWindow.teacherId == 4 || MainWindow.teacherId == 5)
+            {
+                double srznach_max = 0;
+                int uchenik = 0;
+                double [] other = new double[6];
+                for (int i = 0; i < 6; i++)
+                {
+                    if (srznach_max < c1[i] / 4)
+                    {
+                        srznach_max = c1[i] / 4;
+                        uchenik = 12 + i;
+                    }
+                    other[i] = Convert.ToInt32(c1[i]);
+                    other[i] = c1[i] / 4;
+
+                }
+                MessageBox.Show($"Лучший средний балл: {srznach_max} - {MainWindow.Students[uchenik]}\n\nСредний балл остальных:\n{MainWindow.Students[12]} - {other[0]}\n{MainWindow.Students[13]} - {other[1]}\n{MainWindow.Students[14]} - {other[2]}\n{MainWindow.Students[15]} - {other[3]}\n{MainWindow.Students[16]} - {other[4]}\n{MainWindow.Students[17]} - {other[5]}");
             }
         }
 
