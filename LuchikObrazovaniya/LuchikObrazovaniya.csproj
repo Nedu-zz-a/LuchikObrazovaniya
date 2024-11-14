@@ -58,6 +58,9 @@
     <Compile Include="Raspisanie.xaml.cs">
       <DependentUpon>Raspisanie.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Vedomost.xaml.cs">
+      <DependentUpon>Vedomost.xaml</DependentUpon>
+    </Compile>
     <Page Include="Accaunt.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -78,6 +81,10 @@
       <SubType>Code</SubType>
     </Compile>
     <Page Include="Raspisanie.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Vedomost.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

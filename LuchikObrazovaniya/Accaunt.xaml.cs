@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO.Pipes;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -25,9 +26,9 @@ namespace LuchikObrazovaniya
 
         private List<Student> students;
 
-        double[] a1 = new double[6];
-        double[] b1 = new double[6];
-        double[] c1 = new double[6]; // для средних значений
+        public static double[] a1 = new double[6];
+        public static double[] b1 = new double[6];
+        public static double[] c1 = new double[6]; // для средних значений
 
         public Accaunt()
         {
@@ -177,6 +178,16 @@ namespace LuchikObrazovaniya
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
+            if (vedomost != null || vedomost.IsVisible)
+            {
+                vedomost.Close();
+               
+            }
+            if (raspisanie != null || raspisanie.IsVisible)
+            {
+                raspisanie.Close();
+               
+            }
         }
 
         private void exit_Click(object sender, RoutedEventArgs e) //Закрытие программы
@@ -184,80 +195,62 @@ namespace LuchikObrazovaniya
             this.Close();
         }
 
-        private void Vedomost_Click(object sender, RoutedEventArgs e) // Нахождение среднего балла
-        {
-            if (MainWindow.teacherId == 0 || MainWindow.teacherId == 1)
-            {
-                double srznach_max = 0; //Для высшего среднего значения
-                int uchenik = 0;                // Индекс ученика, у которого наивысшее сред знач
-                double [] other = new double[6]; //массив для удобства запоминания всех сред значаений
-                for (int i = 0; i < 6; i++) //Перебор каждого ученика из группы
-                {
-                    if (srznach_max < a1[i] / 4) //Условия для поиска высшего сред значения
-                    {
-                        srznach_max = a1[i] / 4;
-                        uchenik = i;
-                        
-                    }
-                    other[i] = a1[i] / 4; //массив для всех средних значений
-
-                }
-                //Вывод высшего среднего значения в всех остальных значений вместе с ФИО ученика
-                MessageBox.Show($"Лучший средний балл: {srznach_max} - {MainWindow.Students[0]}\n\nСредний балл остальных:\n{MainWindow.Students[0]} - {other[0]}\n{MainWindow.Students[1]} - {other[1]}\n{MainWindow.Students[2]} - {other[2]}\n{MainWindow.Students[3]} - {other[3]}\n{MainWindow.Students[4]} - {other[4]}\n{MainWindow.Students[5]} - {other[5]}");
-            }
-            if (MainWindow.teacherId == 2 || MainWindow.teacherId == 3) // Повторение
-            {
-                double srznach_max = 0;
-                int uchenik = 0;
-                double [] other = new double[6];
-                for (int i = 0; i < 6; i++)
-                {
-                    if (srznach_max < b1[i] / 4)
-                    {
-                        srznach_max = b1[i] / 4;
-                        uchenik = 6 + i;
-                    }
-                    other[i] = b1[i] / 4;
-
-                }
-                MessageBox.Show($"Лучший средний балл: {srznach_max} - {MainWindow.Students[uchenik]}\n\nСредний балл остальных:\n{MainWindow.Students[6]} - {other[0]}\n{MainWindow.Students[7]} - {other[1]}\n{MainWindow.Students[8]} - {other[2]}\n{MainWindow.Students[9]} - {other[3]}\n{MainWindow.Students[10]} - {other[4]}\n{MainWindow.Students[11]} - {other[5]}");
-            }
-            if (MainWindow.teacherId == 4 || MainWindow.teacherId == 5)
-            {
-                double srznach_max = 0;
-                int uchenik = 0;
-                double [] other = new double[6];
-                for (int i = 0; i < 6; i++)
-                {
-                    if (srznach_max < c1[i] / 4)
-                    {
-                        srznach_max = c1[i] / 4;
-                        uchenik = 12 + i;
-                    }
-                    other[i] = Convert.ToInt32(c1[i]);
-                    other[i] = c1[i] / 4;
-
-                }
-                MessageBox.Show($"Лучший средний балл: {srznach_max} - {MainWindow.Students[uchenik]}\n\nСредний балл остальных:\n{MainWindow.Students[12]} - {other[0]}\n{MainWindow.Students[13]} - {other[1]}\n{MainWindow.Students[14]} - {other[2]}\n{MainWindow.Students[15]} - {other[3]}\n{MainWindow.Students[16]} - {other[4]}\n{MainWindow.Students[17]} - {other[5]}");
-            }
-        }
-
-        public static int indikator { get; set; } = 0;
-
         public class Student 
         {
             public string Name { get; set; }
             public string Grade { get; set; } // Инициализируем список оценок
         }
 
+
+        int indikator = 0;
+        int indikator1 = 0;
+
+        Raspisanie raspisanie;
+
         private void raspisanie_Click(object sender, RoutedEventArgs e)
         {
-            if (indikator == 0)
+            if (raspisanie == null || !raspisanie.IsVisible)
             {
-                Raspisanie raspisanie = new Raspisanie();
-                raspisanie.Left = this.Left + this.Width + 0.9;
+                raspisanie = new Raspisanie();
+                raspisanie.Closed += (s, args) =>
+                {
+                    raspisanie = null;
+                };
+                raspisanie.Left = this.Left + this.Width + 1;
                 raspisanie.Top = this.Top;
                 raspisanie.Show();
+            }
+            else
+            {
+                raspisanie.Close();
+                raspisanie = null;
+            }
+            }
+            
+
+         
+            Vedomost vedomost;
+
+        private void Vedomostik_Click(object sender, RoutedEventArgs e) // Нахождение среднего балла
+        {
+            if (vedomost == null || !vedomost.IsVisible)
+            {
+                vedomost = new Vedomost();
+                vedomost.Closed += (s, args) =>
+                {
+                    vedomost = null;
+                    Vedomostik.Content = "Открыть ведомость";
+                };
+                vedomost.Left = this.Left - this.Width + 240;
+                vedomost.Top = this.Top;
+                vedomost.Show();
+                Vedomostik.Content = "Закрыть ведомость";
+            }
+            else
+            {
+                vedomost.Close();
+                vedomost = null;
+                Vedomostik.Content = "Открыть ведомость";
             }
         }
     }

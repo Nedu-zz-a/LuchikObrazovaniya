@@ -61,11 +61,10 @@
             RadiusX="0"
             RadiusY="0" Margin="27,8,145,8" Grid.Row="3" />
         <Grid Grid.Row="4">
-            <Button Background="#9C9990" Margin="0,7,0,0" BorderThickness="0"
-                    Name="back"
-                    Click="back_Click">
-                <Image Source="Image/Back.png" Height="51" Width="165" HorizontalAlignment="Center"/>
-            </Button>
+            <Rectangle Fill="#9C9990"
+StrokeThickness="3"
+RadiusX="0"
+RadiusY="0" Margin="0,7,0,0" />
         </Grid>
     </Grid>
 </Window>

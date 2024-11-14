@@ -98,27 +98,19 @@ RadiusY="0" Margin="0,202,0,-206" />
                     <DataGridTextColumn Header="Оценки" Binding="{Binding Grade}" Width="*"/>
                 </DataGrid.Columns>
             </DataGrid>
-            <Button Width="201" Height="34" 
-                    VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,11"
-                    Name="Vedomost" Click="Vedomost_Click"
-                    Background="Transparent" Content="Cредний балл" FontSize="16" Foreground="white"
+            <Button Width="201" Height="26" 
+                    VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10,0,0,17"
+                    Name="Vedomostik" Click="Vedomostik_Click"
+                    Background="Transparent" Content="Открыть ведомость" FontSize="16" Foreground="white"
                     BorderBrush="White" BorderThickness="1" FontWeight="Light">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="5"/>
-                    </Style>
-                </Button.Resources>
+
             </Button>
-            <Button Width="199" Height="34" 
-         VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,11"
-         Name="raspisanie" Click="raspisanie_Click"
+            <Button Width="199" Height="26" 
+         VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="0,0,10,17"
+         Name="raspisaniek" Click="raspisanie_Click"
          Background="Transparent" Content="Расписание" FontSize="16" Foreground="white"
                     BorderThickness="1" BorderBrush="White" FontWeight="Light">
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="5"/>
-                    </Style>
-                </Button.Resources>
+
             </Button>
         </Grid>
     </Grid>
