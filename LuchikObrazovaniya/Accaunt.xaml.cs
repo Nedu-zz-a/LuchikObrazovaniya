@@ -32,21 +32,20 @@ namespace LuchikObrazovaniya
         public Accaunt()
         {
             InitializeComponent();
-            MainWindow mainWindow = new MainWindow();
-            FIO.Text = MainWindow.teacherFio;
-            Napravlenie.Text = MainWindow.teacherNapr;
+            MainWindow mainWindow = new MainWindow(); 
+            FIO.Text = MainWindow.teacherFio;  //Берём ФИО препода
+            Napravlenie.Text = MainWindow.teacherNapr; // Его направление
             
 
-            if (MainWindow.teacherId == 0 || MainWindow.teacherId == 1)
+            if (MainWindow.teacherId == 0 || MainWindow.teacherId == 1) //Условия если вошли под 1 ил 2 преподом
             {
 
                 string a = "", b = "", c = "", d = "", e = "", f = ""; // для оценок
-                int q = 0, w = 0, p = 0, r = 0, t = 0, y = 0;
-                for (int i = 0; i < 6; i++)
+                for (int i = 0; i < 6; i++) //Перебор кждого ученика
                 {
-                    for (int j = 0; j < 4; j++)
+                    for (int j = 0; j < 4; j++) //Перебор каждой оценки ученика
                     {
-                        if (i == 0) { a += Convert.ToString(MainWindow.UCH_Marks[i, j]); a1[0] += MainWindow.UCH_Marks[i, j]; } // заносит в переменную а все оценки ученика
+                        if (i == 0) { a += Convert.ToString(MainWindow.UCH_Marks[i, j]); a1[0] += MainWindow.UCH_Marks[i, j]; } // заносит в переменную а все оценки ученика, а в массив а1 - ссумму всех оценок для среднего значения
                     }
                     for (int j = 0; j < 4; j++)
                     {
@@ -69,10 +68,10 @@ namespace LuchikObrazovaniya
                         if (i == 5) { f += Convert.ToString(MainWindow.UCH_Marks[i, j]); a1[5] += MainWindow.UCH_Marks[i, j]; }
                     }
                 }
-                List<Student> students = new List<Student>
+                List<Student> students = new List<Student> //Создание листа для строк в DataGrid
                 {
 
-                    new Student { Name = MainWindow.Students[0], Grade = a},
+                    new Student { Name = MainWindow.Students[0], Grade = a}, //Создание строк в DataGrid
                     new Student { Name = MainWindow.Students[1], Grade = b},
                     new Student { Name = MainWindow.Students[2], Grade = c},
                     new Student { Name = MainWindow.Students[3], Grade = d},
@@ -82,7 +81,7 @@ namespace LuchikObrazovaniya
                 gradesDataGrid.ItemsSource = students;
             }
 
-            if (MainWindow.teacherId == 2 || MainWindow.teacherId == 3)
+            if (MainWindow.teacherId == 2 || MainWindow.teacherId == 3) //Повторение предыдущего
             {
 
                 string a = "", b = "", c = "", d = "", e = "", f = "";
@@ -173,39 +172,40 @@ namespace LuchikObrazovaniya
             }
         }
 
-        private void quit_Click(object sender, RoutedEventArgs e)
+        private void quit_Click(object sender, RoutedEventArgs e) //Выход к авторизации
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
         }
 
-        private void exit_Click(object sender, RoutedEventArgs e)
+        private void exit_Click(object sender, RoutedEventArgs e) //Закрытие программы
         {
             this.Close();
         }
 
-        private void Vedomost_Click(object sender, RoutedEventArgs e)
+        private void Vedomost_Click(object sender, RoutedEventArgs e) // Нахождение среднего балла
         {
             if (MainWindow.teacherId == 0 || MainWindow.teacherId == 1)
             {
-                double srznach_max = 0;
-                int uchenik = 0;
-                double [] other = new double[6];
-                for (int i = 0; i < 6; i++)
+                double srznach_max = 0; //Для высшего среднего значения
+                int uchenik = 0;                // Индекс ученика, у которого наивысшее сред знач
+                double [] other = new double[6]; //массив для удобства запоминания всех сред значаений
+                for (int i = 0; i < 6; i++) //Перебор каждого ученика из группы
                 {
-                    if (srznach_max < a1[i] / 4)
+                    if (srznach_max < a1[i] / 4) //Условия для поиска высшего сред значения
                     {
                         srznach_max = a1[i] / 4;
                         uchenik = i;
                         
                     }
-                    other[i] = a1[i] / 4;
+                    other[i] = a1[i] / 4; //массив для всех средних значений
 
                 }
+                //Вывод высшего среднего значения в всех остальных значений вместе с ФИО ученика
                 MessageBox.Show($"Лучший средний балл: {srznach_max} - {MainWindow.Students[0]}\n\nСредний балл остальных:\n{MainWindow.Students[0]} - {other[0]}\n{MainWindow.Students[1]} - {other[1]}\n{MainWindow.Students[2]} - {other[2]}\n{MainWindow.Students[3]} - {other[3]}\n{MainWindow.Students[4]} - {other[4]}\n{MainWindow.Students[5]} - {other[5]}");
             }
-            if (MainWindow.teacherId == 2 || MainWindow.teacherId == 3)
+            if (MainWindow.teacherId == 2 || MainWindow.teacherId == 3) // Повторение
             {
                 double srznach_max = 0;
                 int uchenik = 0;
@@ -244,7 +244,7 @@ namespace LuchikObrazovaniya
 
 
 
-        public class Student
+        public class Student 
         {
             public string Name { get; set; }
             public string Grade { get; set; } // Инициализируем список оценок
