@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Eventing.Reader;
 using System.IO.Pipes;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
@@ -36,7 +37,10 @@ namespace LuchikObrazovaniya
             MainWindow mainWindow = new MainWindow(); 
             FIO.Text = MainWindow.teacherFio;  //Берём ФИО препода
             Napravlenie.Text = MainWindow.teacherNapr; // Его направление
-            
+
+            Array.Clear(a1, 0, a1.Length);
+            Array.Clear(b1, 0, c1.Length);
+            Array.Clear(c1, 0, c1.Length);
 
             if (MainWindow.teacherId == 0 || MainWindow.teacherId == 1) //Условия если вошли под 1 ил 2 преподом
             {
@@ -173,20 +177,45 @@ namespace LuchikObrazovaniya
             }
         }
 
+        Vedomost vedomost;
+        Raspisanie raspisanie;
+
         private void quit_Click(object sender, RoutedEventArgs e) //Выход к авторизации
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             this.Close();
-            if (vedomost != null || vedomost.IsVisible)
+            if (raspisanie == null || !raspisanie.IsVisible)
             {
-                vedomost.Close();
-               
+                raspisanie = new Raspisanie();
+                raspisanie.Closed += (s, args) =>
+                {
+                    raspisanie = null;
+                };
             }
-            if (raspisanie != null || raspisanie.IsVisible)
+            else
             {
                 raspisanie.Close();
-               
+                raspisanie = null;
+            }
+            if (vedomost == null || !vedomost.IsVisible)
+            {
+                vedomost = new Vedomost();
+                vedomost.Closed += (s, args) =>
+                {
+                    vedomost = null;
+                    Vedomostik.Content = "Открыть ведомость";
+                };
+                vedomost.Left = this.Left - this.Width + 240;
+                vedomost.Top = this.Top;
+                vedomost.Show();
+                Vedomostik.Content = "Закрыть ведомость";
+            }
+            else
+            {
+                vedomost.Close();
+                vedomost = null;
+                Vedomostik.Content = "Открыть ведомость";
             }
         }
 
@@ -201,11 +230,6 @@ namespace LuchikObrazovaniya
             public string Grade { get; set; } // Инициализируем список оценок
         }
 
-
-        int indikator = 0;
-        int indikator1 = 0;
-
-        Raspisanie raspisanie;
 
         private void raspisanie_Click(object sender, RoutedEventArgs e)
         {
@@ -226,10 +250,6 @@ namespace LuchikObrazovaniya
                 raspisanie = null;
             }
             }
-            
-
-         
-            Vedomost vedomost;
 
         private void Vedomostik_Click(object sender, RoutedEventArgs e) // Нахождение среднего балла
         {
